@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Project: Book Library</title>
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+
+<body>
+    <header>
+        <nav aria-label="Main Navigation">
+            <ul>
+                <li><a href="index.html" id="brandName">The Spine Shelf</a></li>
+                <div class="container">
+                    <dialog id="quickAddDialog">
+                        <form action="" method="dialog" name="newBookForm" aria-labelledby="form-title">
+                            <!-- Improved form title for screen readers -->
+                            <h1 id="form-title" class="visually-hidden">New Book Form</h1>
+
+                            <!-- Book Details -->
+                            <fieldset class="book-details">
+                                <legend>Book Details</legend>
+                                <div class="form-group">
+                                    <!-- Accessible label and input -->
+                                    <div class="label-input-combo">
+                                        <label for="bookTitle">Title (required):</label>
+                                        <input type="text" id="bookTitle" name="bookTitle" autofocus value="" required
+                                            aria-required="true" aria-describedby="bookTitle-desc" />
+                                        <small id="bookTitle-desc" class="form-description visually-hidden">Enter the
+                                            title
+                                            of
+                                            the book.</small>
+                                    </div>
+
+                                    <!-- Accessible label and input -->
+                                    <div class="label-input-combo">
+                                        <label for="bookAuthor">Author (required):</label>
+                                        <input type="text" id="bookAuthor" name="bookAuthor" value="" required
+                                            aria-required="true" aria-describedby="bookAuthor-desc" />
+                                        <small id="bookAuthor-desc" class="form-description visually-hidden">Enter the
+                                            author's
+                                            name.</small>
+                                    </div>
+
+                                    <!-- Genre dropdown -->
+                                    <div class="label-input-combo">
+                                        <label for="bookGenre">Genre:</label>
+                                        <select id="bookGenre" name="bookGenre" aria-describedby="bookGenre-desc">
+                                            <option value="" disabled selected>Select one</option>
+                                            <option value="fiction">Fiction</option>
+                                            <option value="nonfiction">Non-fiction</option>
+                                            <option value="mystery">Mystery</option>
+                                            <option value="fantasy">Fantasy</option>
+                                            <option value="sci-fi">Science Fiction</option>
+                                            <option value="romance">Romance</option>
+                                            <option value="horror">Horror</option>
+                                            <option value="thriller">Thriller</option>
+                                            <option value="biography">Biography</option>
+                                            <option value="history">History</option>
+                                            <option value="poetry">Poetry</option>
+                                        </select>
+                                        <small id="bookGenre-desc" class="form-description visually-hidden">Select the
+                                            genre
+                                            of the
+                                            book.</small>
+                                    </div>
+                                    <div class="label-input-combo">
+                                        <label for="ISBN">ISBN: (10 or 13-digit number)</label>
+                                        <input type="text" id="ISBN" name="bookISBN" placeholder="" value="" required
+                                            pattern="\d{10,13}" aria-describedby="ISBN-desc" />
+                                        <small id="ISBN-desc" class="form-description visually-hidden">Enter the
+                                            10-digit or
+                                            13-digit ISBN
+                                            number.</small>
+                                    </div>
+                                    <div class="label-input-combo">
+                                        <label for="availabilityStatus">Availability Status</label>
+                                        <select id="availabilityStatus" name="availabilityStatus">
+                                            <option value="unfinished" selected>Unfinished</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <!-- Button Group -->
+                            <div class="btn-group">
+                                <button type="submit" class="submitBtn" aria-label="Submit the form">Submit</button>
+                                <button type="cancel" class="cancelBtn" aria-label="Close the form">Cancel</button>
+                            </div>
+                        </form>
+                    </dialog>
+
+                    <li>
+                        <a href="#" class="icon nav-list-link btn-dialog" id="quickAddBtn">
+                            <i data-feather="plus"></i> Quick Add</a>
+                    </li>
+                    <li>
+                        <a href="newBookForm.html" class="icon nav-list-link"> Add Book
+                            <i data-feather="external-link"></i></a>
+                    </li>
+                </div>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <div class="bookDisplay" aria-live="polite" aria-busy="false">
+                <!-- <div class="book-card">
+                    <div class="book-cover">
+                        <img src="/pawan-thapa-66Oo9dALyTE-unsplash.jpg" alt="Book Cover">
+                    </div>
+                    <div class="book-info">
+                        <h2 class="book-title">Book Title</h2>
+                        <p class="book-author">by Author Name</p>
+                        <p class="book-description">This is a brief description of the book. It provides a quick
+                            overview of the content
+                            or story.</p>
+                        <div class="btn-group">
+                            <button class="btn-details icon"><i data-feather="book"></i>View Details</button>
+                            <button class="btn-details icon"><i data-feather="book-open"></i>Mark as Read</button>
+                            <button class="btn-details icon"><i data-feather="trash"></i>Remove from Shelf</button>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; <span id="current-year"></span> The Spine Shelf. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Update current year dynamically in the footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        feather.replace();
+    </script>
+
+    <script src="/js/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Ensured meta tags are properly configured -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/formStyling.css">
+    <title>Book Library Form</title>
+</head>
+
+<body>
+    <main>
+        <!-- Improved container semantics with accessible and semantic class naming -->
+        <div class="form-container">
+            <form method="post" name="newBookForm" aria-label="Add New Book Form">
+
+                <!-- Book Details Section -->
+                <fieldset class="book-details">
+                    <legend>Book Details</legend>
+
+                    <label for="bookTitle">Book Title <span aria-hidden="true">*</span></label>
+                    <input type="text" id="bookTitle" name="bookTitle" placeholder="Enter book title" required>
+
+                    <label for="bookAuthor">Author Name <span aria-hidden="true">*</span></label>
+                    <input type="text" id="bookAuthor" name="bookAuthor" placeholder="Enter author name" required>
+
+                    <label for="bookGenre">Book Genre</label>
+                    <select id="bookGenre" name="bookGenre" aria-required="true">
+                        <option value="" disabled selected>Select a genre</option>
+                        <option value="fiction">Fiction</option>
+                        <option value="nonfiction">Non-fiction</option>
+                        <option value="mystery">Mystery</option>
+                        <option value="fantasy">Fantasy</option>
+                        <option value="sci-fi">Science Fiction</option>
+                        <option value="romance">Romance</option>
+                        <option value="horror">Horror</option>
+                        <option value="thriller">Thriller</option>
+                        <option value="biography">Biography</option>
+                        <option value="history">History</option>
+                        <option value="poetry">Poetry</option>
+                    </select>
+
+                    <label for="pageNum">Number of Pages:</label>
+                    <input type="number" id="pageNum" name="bookPageNum" placeholder="e.g., 329" value="" min="1"
+                        max="5000" aria-describedby="pageNum-desc" />
+                    <small id="pageNum-desc" class="form-description visually-hidden">Enter the
+                        total
+                        number of
+                        pages.</small>
+
+                    <label for="yearPublished">Publication Year</label>
+                    <input type="number" id="yearPublished" name="yearPublished" min="1600" max="2025"
+                        placeholder="YYYY">
+
+                    <label for="bookPublisher">Publisher</label>
+                    <input type="text" id="bookPublisher" name="bookPublisher" placeholder="Enter publisher">
+
+                    <label for="ISBN">ISBN number: </label>
+                    <input type="number" id="ISBN" name="ISBN" placeholder="Enter 10-digit or 13-digit ISBN" value=""
+                        required maxlength="13" minlength="10">
+                </fieldset>
+
+                <!-- Additional Details Section -->
+                <fieldset class="additional-details">
+                    <legend>Additional Details</legend>
+
+                    <label for="language">Language <span aria-hidden="true">*</span></label>
+                    <input type="text" id="language" name="language" placeholder="Enter language" required>
+
+                    <label for="edition">Edition</label>
+                    <input type="text" id="edition" name="edition" placeholder="Enter edition">
+
+                    <label for="format">Format</label>
+                    <input type="text" id="format" name="format" placeholder="Enter format">
+
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location" placeholder="Enter location">
+
+                    <label for="tags">Tags</label>
+                    <input type="text" id="tags" name="tags" placeholder="Comma-separated tags">
+
+                    <label for="summary">Summary</label>
+                    <textarea id="summary" name="summary" rows="4" placeholder="Enter book summary"></textarea>
+
+                    <label for="rating">Rating</label>
+                    <input type="number" id="rating" name="rating" min="0" max="5" step="0.5" placeholder="0-5">
+
+                    <label for="availabilityStatus">Availability Status</label>
+                    <select id="availabilityStatus" name="availabilityStatus">
+                        <option value="unfinished" selected>unfinished</option>
+                        <option value="Available">Available</option>
+                        <option value="Checked Out">Checked Out</option>
+                        <option value="Reserved">Reserved</option>
+                    </select>
+
+                    <label for="digitalVersionURL">Digital Version URL</label>
+                    <input type="url" id="digitalVersionURL" name="digitalVersionURL" placeholder="http://example.com">
+
+                    <label for="seriesInfo">Series Info</label>
+                    <input type="text" id="seriesInfo" name="seriesInfo" placeholder="Part of a series (if applicable)">
+                </fieldset>
+
+                <!-- Administrative Details Section -->
+                <fieldset class="administrative-details">
+                    <legend>Administrative Details</legend>
+
+                    <label for="dueDate">Due Date</label>
+                    <input type="date" id="dueDate" name="dueDate">
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="hasReadBook" name="hasReadBook">
+                        <label for="hasReadBook">I have read this book</label>
+                    </div>
+                </fieldset>
+
+                <!-- Button Group -->
+                <div class="button-group">
+                    <button type="submit" class="btn-submit">Submit</button>
+                    <button type="reset" class="btn-reset">Reset</button>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -21,87 +21,9 @@
             <ul>
                 <li><a href="index.html" id="brandName">The Spine Shelf</a></li>
                 <div class="container">
-                    <dialog id="quickAddDialog">
-                        <form action="" method="dialog" name="newBookForm" aria-labelledby="form-title">
-                            <!-- Improved form title for screen readers -->
-                            <h1 id="form-title" class="visually-hidden">New Book Form</h1>
-
-                            <!-- Book Details -->
-                            <fieldset class="book-details">
-                                <legend>Book Details</legend>
-                                <div class="form-group">
-                                    <!-- Accessible label and input -->
-                                    <div class="label-input-combo">
-                                        <label for="title">Title (required):</label>
-                                        <input type="text" id="title" name="title" autofocus value="" required
-                                            aria-required="true" aria-describedby="title-desc" />
-                                        <small id="title-desc" class="form-description visually-hidden">Enter the
-                                            title
-                                            of
-                                            the book.</small>
-                                    </div>
-
-                                    <!-- Accessible label and input -->
-                                    <div class="label-input-combo">
-                                        <label for="author">Author (required):</label>
-                                        <input type="text" id="author" name="author" value="" required
-                                            aria-required="true" aria-describedby="author-desc" />
-                                        <small id="author-desc" class="form-description visually-hidden">Enter the
-                                            author's
-                                            name.</small>
-                                    </div>
-
-                                    <!-- Genre dropdown -->
-                                    <div class="label-input-combo">
-                                        <label for="genre">Genre:</label>
-                                        <select id="genre" name="genre" aria-describedby="genre-desc">
-                                            <option value="" disabled selected>Select one</option>
-                                            <option value="fiction">Fiction</option>
-                                            <option value="nonfiction">Non-fiction</option>
-                                            <option value="mystery">Mystery</option>
-                                            <option value="fantasy">Fantasy</option>
-                                            <option value="sci-fi">Science Fiction</option>
-                                            <option value="romance">Romance</option>
-                                            <option value="horror">Horror</option>
-                                            <option value="thriller">Thriller</option>
-                                            <option value="biography">Biography</option>
-                                            <option value="history">History</option>
-                                            <option value="poetry">Poetry</option>
-                                        </select>
-                                        <small id="genre-desc" class="form-description visually-hidden">Select the
-                                            genre
-                                            of the
-                                            book.</small>
-                                    </div>
-                                    <div class="label-input-combo">
-                                        <label for="ISBN">ISBN: (10 or 13-digit number) (required)</label>
-                                        <input type="text" id="ISBN" name="ISBN" placeholder="" value="" required
-                                            pattern="\d{10,13}" aria-describedby="ISBN-desc" />
-                                        <small id="ISBN-desc" class="form-description visually-hidden">Enter the
-                                            10-digit or
-                                            13-digit ISBN
-                                            number.</small>
-                                    </div>
-                                    <div class="label-input-combo">
-                                        <label for="availabilityStatus">Availability Status</label>
-                                        <select id="availabilityStatus" name="availabilityStatus">
-                                            <option value="unfinished" selected>Unfinished</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </fieldset>
-
-                            <!-- Button Group -->
-                            <div class="btn-group">
-                                <button type="submit" class="submitBtn" aria-label="Submit the form">Submit</button>
-                                <button type="cancel" class="cancelBtn" aria-label="Close the form">Cancel</button>
-                            </div>
-                        </form>
-                    </dialog>
-
                     <div class="link-button-container">
                         <a href="#" class="icon nav-list-link btn-dialog" id="refreshBtn">
-                            <i data-feather="refresh-cw"></i></a>
+                            <i data-feather="refresh-cw"></i>Refresh list</a>
 
                         <a href="#" class="icon nav-list-link btn-dialog" id="quickAddBtn">
                             <i data-feather="plus"></i> Quick Add</a>
@@ -113,6 +35,85 @@
             </ul>
         </nav>
     </header>
+
+    <dialog id="quickAddDialog">
+        <form action="" method="dialog" name="newBookForm" aria-labelledby="form-title">
+            <!-- Improved form title for screen readers -->
+            <h1 id="form-title" class="visually-hidden">New Book Form</h1>
+
+            <!-- Book Details -->
+            <fieldset class="book-details">
+                <legend>Book Details</legend>
+                <div class="form-group">
+                    <!-- Accessible label and input -->
+                    <div class="label-input-combo">
+                        <label for="title">Title (required):</label>
+                        <input type="text" id="title" name="title" autofocus value="" required aria-required="true"
+                            aria-describedby="title-desc" />
+                        <small id="title-desc" class="form-description visually-hidden">Enter the
+                            title
+                            of
+                            the book.</small>
+                    </div>
+
+                    <!-- Accessible label and input -->
+                    <div class="label-input-combo">
+                        <label for="author">Author (required):</label>
+                        <input type="text" id="author" name="author" value="" required aria-required="true"
+                            aria-describedby="author-desc" />
+                        <small id="author-desc" class="form-description visually-hidden">Enter the
+                            author's
+                            name.</small>
+                    </div>
+
+                    <!-- Genre dropdown -->
+                    <div class="label-input-combo">
+                        <label for="genre">Genre:</label>
+                        <select id="genre" name="genre" aria-describedby="genre-desc">
+                            <option value="" disabled selected>Select one</option>
+                            <option value="fiction">Fiction</option>
+                            <option value="nonfiction">Non-fiction</option>
+                            <option value="mystery">Mystery</option>
+                            <option value="fantasy">Fantasy</option>
+                            <option value="sci-fi">Science Fiction</option>
+                            <option value="romance">Romance</option>
+                            <option value="horror">Horror</option>
+                            <option value="thriller">Thriller</option>
+                            <option value="biography">Biography</option>
+                            <option value="history">History</option>
+                            <option value="poetry">Poetry</option>
+                        </select>
+                        <small id="genre-desc" class="form-description visually-hidden">Select the
+                            genre
+                            of the
+                            book.</small>
+                    </div>
+                    <div class="label-input-combo">
+                        <label for="ISBN">ISBN: (10 or 13-digit number) (required)</label>
+                        <input type="text" id="ISBN" name="ISBN" placeholder="" value="" required pattern="\d{10,13}"
+                            aria-describedby="ISBN-desc" />
+                        <small id="ISBN-desc" class="form-description visually-hidden">Enter the
+                            10-digit or
+                            13-digit ISBN
+                            number.</small>
+                    </div>
+                    <div class="label-input-combo">
+                        <label for="availabilityStatus">Availability Status</label>
+                        <select id="availabilityStatus" name="availabilityStatus">
+                            <option value="unfinished" selected>Unfinished</option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Button Group -->
+            <div class="btn-group">
+                <button type="submit" class="submitBtn" aria-label="Submit the form">Submit</button>
+                <button type="cancel" class="cancelBtn" aria-label="Close the form">Cancel</button>
+            </div>
+        </form>
+    </dialog>
+
     <main>
         <section>
             <div class="bookDisplay" aria-live="polite" aria-busy="false">

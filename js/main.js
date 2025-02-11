@@ -14,10 +14,6 @@ cancelBtn.addEventListener("click", () => {
     dialog.close();
 });
 
-refreshBtn.addEventListener("click", () => {
-
-})
-
 const myLibrary = [
     finishedBooks = [],
     unfinishedBooks = [],
@@ -27,10 +23,6 @@ const myLibrary = [
 function addUnfinishedBook(book) {
     let newBook = Object.assign(new Book, book);
     return myLibrary[1].push(newBook);
-}
-
-function refreshBookDisplay() {
-
 }
 
 function clearInputsFields() {

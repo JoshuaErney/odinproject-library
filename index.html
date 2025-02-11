@@ -18,21 +18,17 @@
 <body>
     <header>
         <nav aria-label="Main Navigation">
-            <ul>
-                <li><a href="index.html" id="brandName">The Spine Shelf</a></li>
-                <div class="container">
-                    <div class="link-button-container">
-                        <a href="#" class="icon nav-list-link btn-dialog" id="refreshBtn">
-                            <i data-feather="refresh-cw"></i>Refresh list</a>
-
-                        <a href="#" class="icon nav-list-link btn-dialog" id="quickAddBtn">
-                            <i data-feather="plus"></i> Quick Add</a>
-
-                        <a href="newBookForm.html" class="icon nav-list-link"> Add Book
-                            <i data-feather="external-link"></i></a>
-                    </div>
+            <a href="index.html" id="brandName">The Spine Shelf</a>
+            <div class="nav-items">
+                <div class="btn-group">
+                    <button role="button" class="icon nav-btn" id="refreshBtn"><i
+                            data-feather="refresh-cw"></i></button>
+                    <button role="button" class="icon nav-btn" id="quickAddBtn"><i data-feather="plus"></i>Quick
+                        Add</button>
                 </div>
-            </ul>
+                <a href="newBookForm.html" class="icon nav-link">Detailed Book Form<i
+                        data-feather="external-link"></i></a>
+            </div>
         </nav>
     </header>
 
@@ -100,7 +96,7 @@
                     <div class="label-input-combo">
                         <label for="availabilityStatus">Availability Status</label>
                         <select id="availabilityStatus" name="availabilityStatus">
-                            <option value="unfinished" selected>Unfinished</option>
+                            <option value="Pending" selected>Pending Completion</option>
                         </select>
                     </div>
                 </div>
@@ -117,30 +113,23 @@
     <main>
         <section>
             <div class="bookDisplay" aria-live="polite" aria-busy="false">
-                <div class="book-card">
+                <!-- <div class="book-card">
                     <div class="book-cover-img">
-                        <img src="/pawan-thapa-66Oo9dALyTE-unsplash.jpg" id="book-img" alt="Book Cover">
-                        <div class="book-info">
-                            <div class="book-header">
-                                <h2 class="book-title">Book Title</h2>
-                                <p class="book-author">Author Name</p>
-                            </div>
-                            <div class="book-footer">
-                                <button class="btn-details icon" aria-label="Book Details"><i data-feather="book"></i>
-                                    <p>Details</p>
-                                </button>
-                                <button class="btn-details icon" aria-label="Mark as Read"><i
-                                        data-feather="book-open"></i>
-                                    <p>Unread</p>
-                                </button>
-                                <button class="btn-details icon" aria-label="Remove from Shelf"><i
-                                        data-feather="trash"></i>
-                                    <p>Remove</p>
-                                </button>
-                            </div>
-                        </div>
+                        <img src="https://placehold.co/300x480?text=book+image%0Aplaceholder" id="book-img"
+                            alt="Book Cover">
                     </div>
-                </div>
+                    <div class="book-actions">
+                        <button class="btn-details icon" aria-label="Book Details"><i data-feather="book"></i>
+                            <p>Details</p>
+                        </button>
+                        <button class="btn-details icon" aria-label="Mark as Read"><i data-feather="book-open"></i>
+                            <p>Unread</p>
+                        </button>
+                        <button class="btn-details icon" aria-label="Remove from Shelf"><i data-feather="trash"></i>
+                            <p>Remove</p>
+                        </button>
+                    </div>
+                </div> -->
             </div>
         </section>
     </main>

@@ -54,7 +54,7 @@ class Book {
         this.location = location || undefined;
         this.tags = tags || []; // Default to empty array
         this.summary = summary || undefined;
-        this.coverImageURL = coverImageURL || undefined;
+        this.coverImageURL = coverImageURL || "https://placehold.co/300x480?text=book+image%0Aplaceholder";
         this.rating = rating || 0; // Default rating is 0
         this.availabilityStatus = availabilityStatus || "Available";
         this.digitalVersionURL = digitalVersionURL || undefined;

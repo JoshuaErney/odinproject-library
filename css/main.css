@@ -1,12 +1,9 @@
-/* main.css */
-
 /* General Reset */
 * {
     box-sizing: border-box;
     font-family: "Raleway", serif;
 }
 
-/* Body */
 body {
     background-color: #fff;
     color: #333;
@@ -16,28 +13,25 @@ body {
     min-height: 100vh;
 }
 
-a,
-dialog {
-    color: #000;
-    text-decoration: none;
-    font-size: 18px;
+header {
+    padding: 20px;
 }
 
-/* Main Content */
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+
 main {
     flex: 1;
     padding: 0 2rem;
 }
 
-/* Header */
-header {
-    padding: 20px;
-}
-
-nav ul {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+a,
+dialog {
+    color: #000;
+    text-decoration: none;
+    font-size: 18px;
 }
 
 /* Footer */
@@ -46,43 +40,19 @@ footer {
     padding: 1rem 2rem;
 }
 
-li {
-    list-style-type: none;
-}
-
-/* Style for links */
-ul li a {
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    transition: all 0.2s ease-in-out;
-}
-
 .feather {
     width: 18px;
     height: 18px;
     stroke: currentColor;
-    stroke-width: 1;
+    stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;
     fill: none;
 }
 
-.container,
 .btn-group {
     display: flex;
     gap: 0.75rem;
-}
-
-.link-button-container {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.nav-list-link {
-    padding: 5px 10px;
 }
 
 /* Brand name styling */
@@ -104,10 +74,35 @@ ul li a {
 
 /* Button-like link styling */
 .icon {
-    background-color: black;
-    color: white;
     display: flex;
     align-items: center;
+    justify-content: space-around;
+    gap: 0.5rem;
+    font-weight: 300;
+    font-size: 16px;
+}
+
+button.nav-btn {
+    background-color: #000;
+    color: #fff;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+button.nav-btn:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+}
+
+.nav-items {
+    display: flex;
+    gap: 1rem;
+}
+
+a.nav-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.75rem;
 }
 
 /* ---------------------------------------------------- */
@@ -131,37 +126,7 @@ img#book-img {
     border-radius: 2px 16px 16px 2px;
 }
 
-div.book-info {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Dark overlay */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    color: white;
-    text-align: center;
-}
-
-h2.book-title,
-p.book-author {
-    text-shadow: 0 0 0.20em #000000;
-}
-
-h2.book-title {
-    font-weight: 700;
-    font-size: 2rem;
-}
-
-p.book-author {
-    font-weight: 500;
-    font-size: 1.25rem;
-}
-
-div.book-footer {
+div.book-actions {
     display: flex;
     gap: 0.5rem;
 }

@@ -113,33 +113,43 @@
     <main>
         <section>
             <div class="bookDisplay" aria-live="polite" aria-busy="false">
-                <!-- <div class="book-card">
-                    <div class="book-cover-img">
-                        <img src="https://placehold.co/300x480?text=book+image%0Aplaceholder" id="book-img"
-                            alt="Book Cover">
+                <div class="section">
+                    <div class="section-header">
+                        <h2>Available Books</h2>
                     </div>
-                    <div class="book-actions">
-                        <button class="btn-details icon" aria-label="Book Details"><i data-feather="book"></i>
-                            <p>Details</p>
-                        </button>
-                        <button class="btn-details icon" aria-label="Mark as Read"><i data-feather="book-open"></i>
-                            <p>Unread</p>
-                        </button>
-                        <button class="btn-details icon" aria-label="Remove from Shelf"><i data-feather="trash"></i>
-                            <p>Remove</p>
-                        </button>
+                    <div class="book-list">
+                        <div class="book-card">
+                            <div class="book-cover-img">
+                                <img src="https://placehold.co/300x480?text=book+image%0Aplaceholder" id="book-img"
+                                    alt="Book Cover">
+                            </div>
+                            <div class="book-actions">
+                                <button class="btn-details icon" aria-label="Book Details"><i data-feather="book"></i>
+                                    <p>Details</p>
+                                </button>
+                                <button class="btn-details icon" aria-label="Mark as Read"><i
+                                        data-feather="book-open"></i>
+                                    <p>Unread</p>
+                                </button>
+                                <button class="btn-details icon" aria-label="Remove from Shelf"><i
+                                        data-feather="trash"></i>
+                                    <p>Remove</p>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                </div> -->
+                </div>
+                <div class="section">
+                    <div class="section-header">
+                        <h2>Pending Availability</h2>
+                    </div>
+                    <div class="book-list"></div>
+                </div>
             </div>
         </section>
     </main>
-    <footer>
-        <p>&copy; <span id="current-year"></span> The Spine Shelf. All rights reserved.</p>
-    </footer>
 
     <script>
-        // Update current year dynamically in the footer
-        document.getElementById('current-year').textContent = new Date().getFullYear();
         feather.replace();
     </script>
 

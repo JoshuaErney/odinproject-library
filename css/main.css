@@ -10,7 +10,6 @@ body {
     line-height: 1.5;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
 }
 
 header {
@@ -34,12 +33,6 @@ dialog {
     font-size: 18px;
 }
 
-/* Footer */
-footer {
-    text-align: center;
-    padding: 1rem 2rem;
-}
-
 .feather {
     width: 18px;
     height: 18px;
@@ -59,7 +52,7 @@ footer {
 #brandName {
     color: black;
     font-size: 20px;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .visually-hidden {
@@ -108,6 +101,17 @@ a.nav-link:hover {
 /* ---------------------------------------------------- */
 
 div.bookDisplay {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+div.section-header {
+    border-bottom: 1px solid #999;
+    margin: 1rem 0;
+}
+
+div.book-list {
     display: flex;
     gap: 2rem;
 }

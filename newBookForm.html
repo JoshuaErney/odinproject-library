@@ -19,14 +19,14 @@
                 <fieldset class="book-details">
                     <legend>Book Details</legend>
 
-                    <label for="bookTitle">Book Title <span aria-hidden="true">*</span></label>
-                    <input type="text" id="bookTitle" name="bookTitle" placeholder="Enter book title" required>
+                    <label for="title">Book Title <span aria-hidden="true">*</span></label>
+                    <input type="text" id="title" name="title" placeholder="Enter book title" required>
 
-                    <label for="bookAuthor">Author Name <span aria-hidden="true">*</span></label>
-                    <input type="text" id="bookAuthor" name="bookAuthor" placeholder="Enter author name" required>
+                    <label for="author">Author Name <span aria-hidden="true">*</span></label>
+                    <input type="text" id="author" name="author" placeholder="Enter author name" required>
 
-                    <label for="bookGenre">Book Genre</label>
-                    <select id="bookGenre" name="bookGenre" aria-required="true">
+                    <label for="genre">Book Genre</label>
+                    <select id="genre" name="genre" aria-required="true">
                         <option value="" disabled selected>Select a genre</option>
                         <option value="fiction">Fiction</option>
                         <option value="nonfiction">Non-fiction</option>
@@ -41,10 +41,10 @@
                         <option value="poetry">Poetry</option>
                     </select>
 
-                    <label for="pageNum">Number of Pages:</label>
-                    <input type="number" id="pageNum" name="bookPageNum" placeholder="e.g., 329" value="" min="1"
-                        max="5000" aria-describedby="pageNum-desc" />
-                    <small id="pageNum-desc" class="form-description visually-hidden">Enter the
+                    <label for="numOfPages">Number of Pages:</label>
+                    <input type="number" id="numOfPages" name="numOfPages" placeholder="e.g., 329" value="" min="1"
+                        max="5000" aria-describedby="numOfPages-desc" />
+                    <small id="numOfPages-desc" class="form-description visually-hidden">Enter the
                         total
                         number of
                         pages.</small>
@@ -53,8 +53,8 @@
                     <input type="number" id="yearPublished" name="yearPublished" min="1600" max="2025"
                         placeholder="YYYY">
 
-                    <label for="bookPublisher">Publisher</label>
-                    <input type="text" id="bookPublisher" name="bookPublisher" placeholder="Enter publisher">
+                    <label for="publisher">Publisher</label>
+                    <input type="text" id="publisher" name="publisher" placeholder="Enter publisher">
 
                     <label for="ISBN">ISBN number: </label>
                     <input type="number" id="ISBN" name="ISBN" placeholder="Enter 10-digit or 13-digit ISBN" value=""

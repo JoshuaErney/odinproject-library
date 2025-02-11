@@ -1,30 +1,9 @@
-
 const dialog = document.querySelector("#quickAddDialog");
 const form = document.querySelector("form");
 const quickAddBtn = document.querySelector("#quickAddBtn");
 const cancelBtn = document.querySelector(".cancelBtn");
 const submitBtn = document.querySelector(".submitBtn");
-
-const myLibrary = {
-    finishedBooks: [],
-    unfinishedBooks: [],
-    bookLookup: {}
-};
-
-function clearInputsFields() {
-    document.querySelectorAll("input").forEach(input => input.value = "");
-    document.querySelectorAll("select").forEach(select => select.selectedIndex = 0);
-}
-
-// Submit button captures the form data
-form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const formData = new FormData(form);
-    const formValues = [...formData.entries()];
-    console.log(formValues);
-    clearInputsFields()
-    return dialog.close();
-});
+const refreshBtn = document.querySelector(".refreshBtn");
 
 quickAddBtn.addEventListener("click", () => {
     dialog.showModal();
@@ -34,17 +13,32 @@ cancelBtn.addEventListener("click", () => {
     dialog.close();
 });
 
-class quickAddBook {
-    constructor(title, author, genre, isbn, availabilityStatus) {
-        this.title = title;
-        this.author = author;
-        this.genre = genre;
-        this.isbn = isbn;
-        this.availabilityStatus = availabilityStatus;
-    }
+const myLibrary = [
+    finishedBooks = [],
+    unfinishedBooks = [],
+    bookLookup = [],
+];
+
+function addUnfinishedBook(book) {
+    let newBook = Object.assign(new Book, book);
+    return myLibrary[1].push(newBook);
 }
 
-class fullBook {
+function clearInputsFields() {
+    document.querySelectorAll("input").forEach(input => input.value = "");
+    document.querySelectorAll("select").forEach(select => select.selectedIndex = 0);
+}
+
+// Submit button captures the form data
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const book = Object.fromEntries(new FormData(form));
+    clearInputsFields();
+    dialog.close();
+    return addUnfinishedBook(book);
+});
+
+class Book {
     constructor(title, author, genre, numOfPages, yearPublished, ISBN, publisher, language, edition, format, location, tags, summary, coverImageURL, rating, availabilityStatus, digitalVersionURL, seriesInfo) {
         this.title = title;
         this.author = author;
@@ -52,17 +46,17 @@ class fullBook {
         this.yearPublished = yearPublished;
         this.numOfPages = numOfPages;
         this.ISBN = ISBN;
-        this.publisher = publisher;
-        this.language = language;
-        this.edition = edition;
-        this.format = format;
-        this.location = location;
+        this.publisher = publisher || undefined;
+        this.language = language || undefined;
+        this.edition = edition || undefined;
+        this.format = format || undefined;
+        this.location = location || undefined;
         this.tags = tags || []; // Default to empty array
-        this.summary = summary;
-        this.coverImageURL = coverImageURL;
+        this.summary = summary || undefined;
+        this.coverImageURL = coverImageURL || undefined;
         this.rating = rating || 0; // Default rating is 0
         this.availabilityStatus = availabilityStatus || "Available";
-        this.digitalVersionURL = digitalVersionURL;
+        this.digitalVersionURL = digitalVersionURL || undefined;
         this.seriesInfo = seriesInfo || null; // If part of a series
     }
 }

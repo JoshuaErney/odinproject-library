@@ -26,10 +26,10 @@
                                 <div class="form-group">
                                     <!-- Accessible label and input -->
                                     <div class="label-input-combo">
-                                        <label for="bookTitle">Title (required):</label>
-                                        <input type="text" id="bookTitle" name="bookTitle" autofocus value="" required
-                                            aria-required="true" aria-describedby="bookTitle-desc" />
-                                        <small id="bookTitle-desc" class="form-description visually-hidden">Enter the
+                                        <label for="title">Title (required):</label>
+                                        <input type="text" id="title" name="title" autofocus value="" required
+                                            aria-required="true" aria-describedby="title-desc" />
+                                        <small id="title-desc" class="form-description visually-hidden">Enter the
                                             title
                                             of
                                             the book.</small>
@@ -37,18 +37,18 @@
 
                                     <!-- Accessible label and input -->
                                     <div class="label-input-combo">
-                                        <label for="bookAuthor">Author (required):</label>
-                                        <input type="text" id="bookAuthor" name="bookAuthor" value="" required
-                                            aria-required="true" aria-describedby="bookAuthor-desc" />
-                                        <small id="bookAuthor-desc" class="form-description visually-hidden">Enter the
+                                        <label for="author">Author (required):</label>
+                                        <input type="text" id="author" name="author" value="" required
+                                            aria-required="true" aria-describedby="author-desc" />
+                                        <small id="author-desc" class="form-description visually-hidden">Enter the
                                             author's
                                             name.</small>
                                     </div>
 
                                     <!-- Genre dropdown -->
                                     <div class="label-input-combo">
-                                        <label for="bookGenre">Genre:</label>
-                                        <select id="bookGenre" name="bookGenre" aria-describedby="bookGenre-desc">
+                                        <label for="genre">Genre:</label>
+                                        <select id="genre" name="genre" aria-describedby="genre-desc">
                                             <option value="" disabled selected>Select one</option>
                                             <option value="fiction">Fiction</option>
                                             <option value="nonfiction">Non-fiction</option>
@@ -62,14 +62,14 @@
                                             <option value="history">History</option>
                                             <option value="poetry">Poetry</option>
                                         </select>
-                                        <small id="bookGenre-desc" class="form-description visually-hidden">Select the
+                                        <small id="genre-desc" class="form-description visually-hidden">Select the
                                             genre
                                             of the
                                             book.</small>
                                     </div>
                                     <div class="label-input-combo">
                                         <label for="ISBN">ISBN: (10 or 13-digit number) (required)</label>
-                                        <input type="text" id="ISBN" name="bookISBN" placeholder="" value="" required
+                                        <input type="text" id="ISBN" name="ISBN" placeholder="" value="" required
                                             pattern="\d{10,13}" aria-describedby="ISBN-desc" />
                                         <small id="ISBN-desc" class="form-description visually-hidden">Enter the
                                             10-digit or
@@ -93,14 +93,16 @@
                         </form>
                     </dialog>
 
-                    <li>
+                    <div class="link-button-container">
+                        <a href="#" class="icon nav-list-link btn-dialog" id="refreshBtn">
+                            <i data-feather="refresh-cw"></i></a>
+
                         <a href="#" class="icon nav-list-link btn-dialog" id="quickAddBtn">
                             <i data-feather="plus"></i> Quick Add</a>
-                    </li>
-                    <li>
+
                         <a href="newBookForm.html" class="icon nav-list-link"> Add Book
                             <i data-feather="external-link"></i></a>
-                    </li>
+                    </div>
                 </div>
             </ul>
         </nav>

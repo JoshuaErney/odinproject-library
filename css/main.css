@@ -38,6 +38,12 @@ li {
     gap: 0.75rem;
 }
 
+.link-button-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 /* Style for links */
 ul li a {
     text-decoration: none;
@@ -73,6 +79,7 @@ ul li a {
     background-color: black;
     color: white;
     border: 2px solid black;
+    border-radius: 5px;
     display: flex;
     align-items: center;
     gap: 5px;

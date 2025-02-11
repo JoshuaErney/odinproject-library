@@ -1,5 +1,6 @@
 const dialog = document.querySelector("#quickAddDialog");
 const form = document.querySelector("form");
+const bookDisplay = document.querySelector(".bookDisplay");
 const quickAddBtn = document.querySelector("#quickAddBtn");
 const cancelBtn = document.querySelector(".cancelBtn");
 const submitBtn = document.querySelector(".submitBtn");
@@ -13,6 +14,10 @@ cancelBtn.addEventListener("click", () => {
     dialog.close();
 });
 
+refreshBtn.addEventListener("click", () => {
+
+})
+
 const myLibrary = [
     finishedBooks = [],
     unfinishedBooks = [],
@@ -22,6 +27,10 @@ const myLibrary = [
 function addUnfinishedBook(book) {
     let newBook = Object.assign(new Book, book);
     return myLibrary[1].push(newBook);
+}
+
+function refreshBookDisplay() {
+
 }
 
 function clearInputsFields() {

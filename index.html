@@ -4,6 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="/css/main.css">
     <title>Project: Book Library</title>
     <script src="https://unpkg.com/feather-icons"></script>
@@ -110,23 +116,30 @@
     <main>
         <section>
             <div class="bookDisplay" aria-live="polite" aria-busy="false">
-                <!-- <div class="book-card">
-                    <div class="book-cover">
-                        <img src="/pawan-thapa-66Oo9dALyTE-unsplash.jpg" alt="Book Cover">
-                    </div>
-                    <div class="book-info">
-                        <h2 class="book-title">Book Title</h2>
-                        <p class="book-author">by Author Name</p>
-                        <p class="book-description">This is a brief description of the book. It provides a quick
-                            overview of the content
-                            or story.</p>
-                        <div class="btn-group">
-                            <button class="btn-details icon"><i data-feather="book"></i>View Details</button>
-                            <button class="btn-details icon"><i data-feather="book-open"></i>Mark as Read</button>
-                            <button class="btn-details icon"><i data-feather="trash"></i>Remove from Shelf</button>
+                <div class="book-card">
+                    <div class="book-cover-img">
+                        <img src="/pawan-thapa-66Oo9dALyTE-unsplash.jpg" id="book-img" alt="Book Cover">
+                        <div class="book-info">
+                            <div class="book-header">
+                                <h2 class="book-title">Book Title</h2>
+                                <p class="book-author">Author Name</p>
+                            </div>
+                            <div class="book-footer">
+                                <button class="btn-details icon" aria-label="Book Details"><i data-feather="book"></i>
+                                    <p>Details</p>
+                                </button>
+                                <button class="btn-details icon" aria-label="Mark as Read"><i
+                                        data-feather="book-open"></i>
+                                    <p>Unread</p>
+                                </button>
+                                <button class="btn-details icon" aria-label="Remove from Shelf"><i
+                                        data-feather="trash"></i>
+                                    <p>Remove</p>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
             </div>
         </section>
     </main>

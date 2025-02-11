@@ -3,8 +3,7 @@
 /* General Reset */
 * {
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
-    padding: 0;
+    font-family: "Raleway", serif;
 }
 
 /* Body */
@@ -15,6 +14,19 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+}
+
+a,
+dialog {
+    color: #000;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* Main Content */
+main {
+    flex: 1;
+    padding: 0 2rem;
 }
 
 /* Header */
@@ -28,8 +40,33 @@ nav ul {
     align-items: center;
 }
 
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1rem 2rem;
+}
+
 li {
     list-style-type: none;
+}
+
+/* Style for links */
+ul li a {
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+}
+
+.feather {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
 }
 
 .container,
@@ -42,15 +79,6 @@ li {
     display: flex;
     align-items: center;
     gap: 1rem;
-}
-
-/* Style for links */
-ul li a {
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    transition: all 0.2s ease-in-out;
 }
 
 .nav-list-link {
@@ -78,167 +106,75 @@ ul li a {
 .icon {
     background-color: black;
     color: white;
-    border: 2px solid black;
-    border-radius: 5px;
     display: flex;
     align-items: center;
-    gap: 5px;
 }
 
-/* Hover effect for the button */
-.icon:hover {
-    background-color: white;
-    color: black;
-    border-color: black;
-}
+/* ---------------------------------------------------- */
 
-/* Active (pressed) effect for the button */
-.icon:active {
-    transform: scale(0.95);
-    background-color: gray;
-    border-color: darkgray;
-}
-
-/* Feather icon adjustments */
-.icon i {
-    vertical-align: middle;
-}
-
-a,
-dialog {
-    color: #000;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-/* Main Content */
-main {
-    flex: 1;
-    padding: 0 2rem;
-}
-
-.bookDisplay {
-    border-radius: 0.75em;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
-    gap: 1rem;
-}
-
-/* Container for the book card */
-.book-card {
+div.bookDisplay {
     display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    /* padding: 20px; */
-    background-color: #f9f9f9;
-    /* Light gray background */
-    border: 1px solid #e0e0e0;
-    /* Subtle border */
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    /* Soft shadow */
-    max-width: 600px;
-    transition: transform 0.2s ease-in-out;
+    gap: 2rem;
 }
 
-/* Hover effect for the book card */
-.book-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+div.book-card {
+    width: 300px;
+    height: 480px;
+    position: relative;
 }
 
-/* Book cover section */
-.book-cover img {
-    width: 120px;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 4px;
+img#book-img {
+    max-width: 100%;
+    object-position: center;
+    object-fit: fill;
+    border: 1px solid transparent;
+    border-radius: 2px 16px 16px 2px;
 }
 
-/* Book information section */
-.book-info {
-    flex: 1;
-    padding: 0.5rem 0;
-}
-
-/* Book title */
-.book-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 0 0 5px;
-    color: #333;
-}
-
-/* Book author */
-.book-author {
-    font-size: 14px;
-    margin: 0 0 10px;
-    color: #666;
-}
-
-/* Book description */
-.book-description {
-    font-size: 14px;
-    line-height: 1.5;
-    margin-bottom: 15px;
-    color: #555;
-}
-
-.label-input-combo {
-    margin-top: 1rem;
-}
-
-/* Style for both buttons */
-.btn-group .btn-details {
-    text-decoration: none;
-    /* Remove underline */
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 12px;
-    background-color: black;
+div.book-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Dark overlay */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
     color: white;
-    border: 1px solid black;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    /* Space between icon and text */
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-}
-
-/* Hover effect for buttons */
-.btn-group .btn-details:hover {
-    background-color: white;
-    color: black;
-}
-
-/* Active (pressed) effect for buttons */
-.btn-group .btn-details:active {
-    transform: scale(0.95);
-    background-color: gray;
-    border-color: darkgray;
-}
-
-/* Feather icon adjustments */
-.btn-group .btn-details i {
-    vertical-align: middle;
-}
-
-.feather {
-    width: 18px;
-    height: 18px;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    fill: none;
-}
-
-/* Footer */
-footer {
     text-align: center;
-    padding: 1rem 2rem;
 }
+
+h2.book-title,
+p.book-author {
+    text-shadow: 0 0 0.20em #000000;
+}
+
+h2.book-title {
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+p.book-author {
+    font-weight: 500;
+    font-size: 1.25rem;
+}
+
+div.book-footer {
+    display: flex;
+    gap: 0.5rem;
+}
+
+button.btn-details {
+    border: none;
+    background-color: transparent;
+    color: white;
+    display: flex;
+    gap: 0.25rem;
+}
+
+/* ---------------------------------------------------- */
 
 /* Dialog styling */
 
@@ -290,6 +226,10 @@ form .form-description {
     font-size: 0.875rem;
     color: #6c757d;
     display: block;
+}
+
+div.label-input-combo {
+    margin-top: 1rem;
 }
 
 dialog input,

@@ -16,26 +16,23 @@ cancelBtn.addEventListener("click", () => {
     dialog.close();
 });
 
-// target each individual form field data entered by using "myLibrary[1][0].title",  specifically the ".objectKey", then...
+const myLibrary = {
+    finishedBooks: [],
+    unfinishedBooks: [],
+    bookLookup: []
+};
 
-// Grab the objectKey for all the fields using "Object.keys(obj)" which returns an array, then...
-
-// iterate over that array using forEach()
-
-// then i can print them out using the function that creates and assigns them all to the correct dom element. 
-
-const myLibrary = [
-    finishedBooks = [],
-    unfinishedBooks = [],
-    bookLookup = [],
-];
-
-function addUnfinishedBook(book) {
-    let newBook = Object.assign(new Book, book);
-    return myLibrary[1].push(newBook);
+function addToShelf(book) {
+    createBook(book);
 }
 
-function clearInputsFields() {
+function addUnfinishedBook(book) {
+    let newBook = new Book(...Object.values(book));
+    myLibrary.unfinishedBooks.push(newBook);
+    return addToShelf(book);
+}
+
+function clearInputFields() {
     document.querySelectorAll("input").forEach(input => input.value = "");
     document.querySelectorAll("select").forEach(select => select.selectedIndex = 0);
 }
@@ -44,9 +41,9 @@ function clearInputsFields() {
 form.addEventListener("submit", (event) => {
     event.preventDefault();
     const book = Object.fromEntries(new FormData(form));
-    clearInputsFields();
+    clearInputFields();
     dialog.close();
-    return addUnfinishedBook(book);
+    addUnfinishedBook(book);
 });
 
 class Book {
@@ -74,7 +71,7 @@ class Book {
     }
 }
 
-function createBook() {
+function createBook(book) {
     // Create the book card
     const bookCard = document.createElement("div");
     bookCard.classList.add("book-card");

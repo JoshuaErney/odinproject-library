@@ -111,14 +111,15 @@ div.section-header {
     margin: 1rem 0;
 }
 
-div.book-list {
+div.available-book-list,
+div.pending-book-list {
     display: flex;
     gap: 2rem;
 }
 
 div.book-card {
-    width: 300px;
-    height: 480px;
+    width: 240px;
+    height: 400px;
     position: relative;
 }
 

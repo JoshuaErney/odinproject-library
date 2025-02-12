@@ -5,6 +5,12 @@
     <!-- Ensured meta tags are properly configured -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <!-- Style Sheets -->
     <link rel="stylesheet" href="/css/formStyling.css">
     <title>Book Library Form</title>
 </head>
@@ -105,8 +111,11 @@
                 <fieldset class="administrative-details">
                     <legend>Administrative Details</legend>
 
-                    <label for="dueDate">Due Date</label>
-                    <input type="date" id="dueDate" name="dueDate">
+                    <label for="checkoutDate">Check-out Date</label>
+                    <input type="date" id="checkoutDate" name="checkoutDate">
+
+                    <label for="bookRecipient">Book Recipient</label>
+                    <input type="text" name="bookRecipient" id="bookRecipient" placeholder="Please enter your name">
 
                     <div class="checkbox-group">
                         <input type="checkbox" id="hasReadBook" name="hasReadBook">

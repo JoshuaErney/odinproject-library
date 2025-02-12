@@ -1,6 +1,8 @@
 const dialog = document.querySelector("#quickAddDialog");
 const form = document.querySelector("form");
 const bookDisplay = document.querySelector(".bookDisplay");
+const pendingBookList = document.querySelector(".pending-book-list");
+const availableBookList = document.querySelector(".available-book-list");
 const quickAddBtn = document.querySelector("#quickAddBtn");
 const cancelBtn = document.querySelector(".cancelBtn");
 const submitBtn = document.querySelector(".submitBtn");
@@ -13,6 +15,14 @@ quickAddBtn.addEventListener("click", () => {
 cancelBtn.addEventListener("click", () => {
     dialog.close();
 });
+
+// target each individual form field data entered by using "myLibrary[1][0].title",  specifically the ".objectKey", then...
+
+// Grab the objectKey for all the fields using "Object.keys(obj)" which returns an array, then...
+
+// iterate over that array using forEach()
+
+// then i can print them out using the function that creates and assigns them all to the correct dom element. 
 
 const myLibrary = [
     finishedBooks = [],
@@ -40,7 +50,7 @@ form.addEventListener("submit", (event) => {
 });
 
 class Book {
-    constructor(title, author, genre, numOfPages, yearPublished, ISBN, publisher, language, edition, format, location, tags, summary, coverImageURL, rating, availabilityStatus, digitalVersionURL, seriesInfo) {
+    constructor(title, author, genre, numOfPages, yearPublished, ISBN, publisher, language, edition, format, location, tags, summary, coverImageURL, rating, availabilityStatus, digitalVersionURL, seriesInfo, bookRecipient, checkoutDate) {
         this.title = title;
         this.author = author;
         this.genre = genre;
@@ -52,25 +62,70 @@ class Book {
         this.edition = edition || undefined;
         this.format = format || undefined;
         this.location = location || undefined;
-        this.tags = tags || []; // Default to empty array
+        this.tags = tags || [];
         this.summary = summary || undefined;
         this.coverImageURL = coverImageURL || "https://placehold.co/300x480?text=book+image%0Aplaceholder";
-        this.rating = rating || 0; // Default rating is 0
+        this.rating = rating || 0;
         this.availabilityStatus = availabilityStatus || "Available";
         this.digitalVersionURL = digitalVersionURL || undefined;
-        this.seriesInfo = seriesInfo || null; // If part of a series
+        this.seriesInfo = seriesInfo || undefined;
+        this.bookRecipient = bookRecipient || [];
+        this.checkoutDate = checkoutDate || undefined;
     }
 }
 
-/* 
-this.borrowerHistory = []; // Stores past borrowers
-this.dueDate = null; // If checked out
+function createBook() {
+    // Create the book card
+    const bookCard = document.createElement("div");
+    bookCard.classList.add("book-card");
 
-// Method to display book details
-this.getDetails = function () {
-    return `${this.title} by ${this.author}, Genre: ${this.genre}, Published: ${this.yearPublished}, ISBN: ${this.ISBN}, Edition: ${this.edition}, Format: ${this.format}, Location: ${this.location}, Availability: ${this.availabilityStatus}`;
-}; 
-*/
+    // Create the book cover container
+    const bookCover = document.createElement("div");
+    bookCover.classList.add("book-cover-img");
+
+    // Create the image element
+    const bookImg = document.createElement("img");
+    bookImg.src = "https://placehold.co/300x480?text=book+image%0Aplaceholder";
+    bookImg.id = "book-img";
+    bookImg.alt = "Book Cover";
+
+    // Append image to book cover container
+    bookCover.appendChild(bookImg);
+
+    // Create the book actions container
+    const bookActions = document.createElement("div");
+    bookActions.classList.add("book-actions");
+
+    // Function to create buttons
+    function createButton(iconName, text, ariaLabel) {
+        const button = document.createElement("button");
+        button.classList.add("btn-details", "icon");
+        button.setAttribute("aria-label", ariaLabel);
+
+        const icon = document.createElement("i");
+        icon.setAttribute("data-feather", iconName);
+
+        const paragraph = document.createElement("p");
+        paragraph.textContent = text;
+
+        button.appendChild(icon);
+        button.appendChild(paragraph);
+
+        return button;
+    }
+
+    // Create and append buttons
+    bookActions.appendChild(createButton("btn-details", "book", "Details", "Book Details"));
+    bookActions.appendChild(createButton("btn-details", "book-open", "Unread", "Mark as Read"));
+    bookActions.appendChild(createButton("btn-details", "trash", "Remove", "Remove from Shelf"));
+
+    // Append elements to book card
+    bookCard.appendChild(bookCover);
+    bookCard.appendChild(bookActions);
+
+    // Append book card to book list
+    pendingBookList.appendChild(bookCard);
+}
 
 /*
     The International Standard Book Number (ISBN) format is 13 digits long, with each digit separated by a hyphen or space

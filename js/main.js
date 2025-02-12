@@ -1,6 +1,7 @@
 const dialog = document.querySelector("#quickAddDialog");
 const form = document.querySelector("form");
 const bookDisplay = document.querySelector(".bookDisplay");
+const imageInput = document.querySelector("#imageUpload");
 const pendingBookList = document.querySelector(".pending-book-list");
 const availableBookList = document.querySelector(".available-book-list");
 const quickAddBtn = document.querySelector("#quickAddBtn");
@@ -22,6 +23,22 @@ const myLibrary = {
     bookLookup: []
 };
 
+let uploadedImageData = ""; // This will store the image data URL
+
+imageInput.addEventListener("change", function (event) {
+    const file = event.target.files[0]; // Get the selected file
+
+    if (file && file.type.startsWith("image/")) {
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            uploadedImageData = e.target.result; // Store the Base64 image data
+        };
+
+        reader.readAsDataURL(file); // Convert file to Base64
+    }
+});
+
 function addToShelf(book) {
     createBook(book);
 }
@@ -34,6 +51,7 @@ function addUnfinishedBook(book) {
 
 function clearInputFields() {
     document.querySelectorAll("input").forEach(input => input.value = "");
+    document.querySelectorAll("file").forEach(file => file.value = "");
     document.querySelectorAll("select").forEach(select => select.selectedIndex = 0);
 }
 
@@ -41,14 +59,23 @@ function clearInputFields() {
 form.addEventListener("submit", (event) => {
     event.preventDefault();
     const book = Object.fromEntries(new FormData(form));
+
+    if (uploadedImageData) {
+        book.imageUpload = uploadedImageData;
+        uploadedImageData = "";
+    } else {
+        book.imageUpload = "https://placehold.co/300x480?text=book+image%0Aplaceholder";
+    }
+
     clearInputFields();
     dialog.close();
     addUnfinishedBook(book);
 });
 
 class Book {
-    constructor(title, author, genre, numOfPages, yearPublished, ISBN, publisher, language, edition, format, location, tags, summary, coverImageURL, rating, availabilityStatus, digitalVersionURL, seriesInfo, bookRecipient, checkoutDate) {
+    constructor(title, imageUpload, author, genre, numOfPages, yearPublished, ISBN, publisher, language, edition, format, location, tags, summary, rating, availabilityStatus, digitalVersionURL, seriesInfo, bookRecipient, checkoutDate) {
         this.title = title;
+        this.imageUpload = imageUpload || "https://placehold.co/300x480?text=book+image%0Aplaceholder";
         this.author = author;
         this.genre = genre;
         this.yearPublished = yearPublished;
@@ -61,7 +88,6 @@ class Book {
         this.location = location || undefined;
         this.tags = tags || [];
         this.summary = summary || undefined;
-        this.coverImageURL = coverImageURL || "https://placehold.co/300x480?text=book+image%0Aplaceholder";
         this.rating = rating || 0;
         this.availabilityStatus = availabilityStatus || "Available";
         this.digitalVersionURL = digitalVersionURL || undefined;
@@ -72,57 +98,54 @@ class Book {
 }
 
 function createBook(book) {
-    // Create the book card
+    // Create Elements
     const bookCard = document.createElement("div");
-    bookCard.classList.add("book-card");
-
-    // Create the book cover container
-    const bookCover = document.createElement("div");
-    bookCover.classList.add("book-cover-img");
-
-    // Create the image element
-    const bookImg = document.createElement("img");
-    bookImg.src = "https://placehold.co/300x480?text=book+image%0Aplaceholder";
-    bookImg.id = "book-img";
-    bookImg.alt = "Book Cover";
-
-    // Append image to book cover container
-    bookCover.appendChild(bookImg);
-
-    // Create the book actions container
+    const bookCoverImg = document.createElement("div");
     const bookActions = document.createElement("div");
-    bookActions.classList.add("book-actions");
+    const bookImg = document.createElement("img");
 
-    // Function to create buttons
-    function createButton(iconName, text, ariaLabel) {
-        const button = document.createElement("button");
-        button.classList.add("btn-details", "icon");
-        button.setAttribute("aria-label", ariaLabel);
+    // Set Classes
+    bookCard.setAttribute("class", "book-card");
+    bookCoverImg.setAttribute("class", "book-cover-img");
+    bookActions.setAttribute("class", "book-actions");
 
-        const icon = document.createElement("i");
-        icon.setAttribute("data-feather", iconName);
+    bookImg.setAttribute("id", "book-img");
+    bookImg.setAttribute("alt", "Book Cover");
+    bookImg.setAttribute("src", book.imageUpload);
 
-        const paragraph = document.createElement("p");
-        paragraph.textContent = text;
+    function createBtns() {
+        const buttonsData = [
+            { ariaLabel: "Book Details", icon: "book", text: "Details" },
+            { ariaLabel: "Mark as Read", icon: "book-open", text: "Unread" },
+            { ariaLabel: "Remove from Shelf", icon: "trash", text: "Remove" }
+        ];
 
-        button.appendChild(icon);
-        button.appendChild(paragraph);
+        buttonsData.forEach(data => {
+            const button = document.createElement("button");
+            const para = document.createElement("p");
+            const icon = document.createElement("i");
 
-        return button;
+            button.classList.add("btn-details", "icon");
+            button.setAttribute("aria-label", data.ariaLabel);
+            icon.setAttribute("data-feather", data.icon);
+            para.textContent = data.text;
+
+            button.appendChild(icon);
+            button.appendChild(para);
+
+            bookActions.appendChild(button);
+        });
     }
 
-    // Create and append buttons
-    bookActions.appendChild(createButton("btn-details", "book", "Details", "Book Details"));
-    bookActions.appendChild(createButton("btn-details", "book-open", "Unread", "Mark as Read"));
-    bookActions.appendChild(createButton("btn-details", "trash", "Remove", "Remove from Shelf"));
+    createBtns();
 
-    // Append elements to book card
-    bookCard.appendChild(bookCover);
+    bookCoverImg.appendChild(bookImg);
+    bookCard.appendChild(bookCoverImg);
     bookCard.appendChild(bookActions);
 
-    // Append book card to book list
     pendingBookList.appendChild(bookCard);
 }
+
 
 /*
     The International Standard Book Number (ISBN) format is 13 digits long, with each digit separated by a hyphen or space

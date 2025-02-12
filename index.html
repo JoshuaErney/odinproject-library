@@ -46,10 +46,13 @@
                         <label for="title">Title (required):</label>
                         <input type="text" id="title" name="title" autofocus value="" required aria-required="true"
                             aria-describedby="title-desc" />
-                        <small id="title-desc" class="form-description visually-hidden">Enter the
-                            title
-                            of
-                            the book.</small>
+                        <small id="title-desc" class="form-description visually-hidden">Enter the title of the
+                            book.</small>
+                    </div>
+
+                    <div class="label-input-combo">
+                        <label for="imageUpload" class="imageLabel">Upload Book Cover</label>
+                        <input type="file" id="imageUpload" class="imageInput" accept="image/*" capture="environment">
                     </div>
 
                     <!-- Accessible label and input -->

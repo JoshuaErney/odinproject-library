@@ -144,20 +144,6 @@ function createBook(book) {
     bookCard.appendChild(bookActions);
 
     pendingBookList.appendChild(bookCard);
+
+    feather.replace();
 }
-
-
-/*
-    The International Standard Book Number (ISBN) format is 13 digits long, with each digit separated by a hyphen or space
-    
-    Prefix: The first three digits, which are always either 978 or 979 
-    
-    Registration group: The next one to five digits, which identify the country, region, or language where the book was registered 
-    
-    Registrant: The next up to seven digits, which identify the publisher or imprint 
-    
-    Publication: The next up to six digits, which identify the edition and format of the book
-    
-    Check digit: The final digit, which is calculated using a mathematical formula to validate the other digits
-       
-*/

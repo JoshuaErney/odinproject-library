@@ -133,15 +133,18 @@ img#book-img {
 
 div.book-actions {
     display: flex;
+    justify-content: center;
+    width: 100%;
     gap: 0.5rem;
 }
 
 button.btn-details {
     border: none;
     background-color: transparent;
-    color: white;
+    color: #000;
     display: flex;
     gap: 0.25rem;
+    font-size: 12px;
 }
 
 /* ---------------------------------------------------- */

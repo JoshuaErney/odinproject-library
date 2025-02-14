@@ -21,8 +21,6 @@
             <a href="index.html" id="brandName">The Spine Shelf</a>
             <div class="nav-items">
                 <div class="btn-group">
-                    <button role="button" class="icon nav-btn" id="refreshBtn"><i
-                            data-feather="refresh-cw"></i></button>
                     <button role="button" class="icon nav-btn" id="quickAddBtn"><i data-feather="plus"></i>Quick
                         Add</button>
                 </div>
@@ -114,7 +112,7 @@
     </dialog>
 
     <main>
-        <section>
+        <section id="main-section">
             <div class="bookDisplay" aria-live="polite" aria-busy="false">
                 <div class="section">
                     <div class="section-header">
@@ -130,6 +128,21 @@
                 </div>
             </div>
         </section>
+
+        <section id="secondary-section">
+            <h2>Made with these tools</h2>
+            <div class="flex-container">
+                <div class="card">
+                    <a href="https://feathericons.com/">FeatherIcons (Icons)</a>
+                </div>
+                <div class="card">
+                    <a href="https://unsplash.com/">Unsplash (Photos)</a>
+                </div>
+                <div class="card">
+                    <a href="https://fonts.google.com/">Google Fonts (Fonts)</a>
+                </div>
+            </div>
+        </section>
     </main>
 
     <script src="/js/main.js"></script>
@@ -142,7 +155,7 @@
 
 </html>
 
-/*
+<!-- 
 The International Standard Book Number (ISBN) format is 13 digits long, with each digit separated by a hyphen or space
 
 Prefix: The first three digits, which are always either 978 or 979
@@ -154,6 +167,5 @@ Registrant: The next up to seven digits, which identify the publisher or imprint
 
 Publication: The next up to six digits, which identify the edition and format of the book
 
-Check digit: The final digit, which is calculated using a mathematical formula to validate the other digits
-
-*/
+Check digit: The final digit, which is calculated using a mathematical formula to validate the other digits 
+-->

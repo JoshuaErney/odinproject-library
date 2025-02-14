@@ -73,7 +73,7 @@ form.addEventListener("submit", (event) => {
 });
 
 class Book {
-    constructor(title, imageUpload, author, genre, numOfPages, yearPublished, ISBN, publisher, language, edition, format, location, tags, summary, rating, availabilityStatus, digitalVersionURL, seriesInfo, bookRecipient, checkoutDate) {
+    constructor(title, imageUpload, author, genre, numOfPages, yearPublished, ISBN, publisher, language, edition, format, location, tags, rating, availabilityStatus, digitalVersionURL, seriesInfo, bookRecipient, checkoutDate) {
         this.title = title;
         this.imageUpload = imageUpload || "https://placehold.co/300x480?text=book+image%0Aplaceholder";
         this.author = author;
@@ -87,7 +87,6 @@ class Book {
         this.format = format || undefined;
         this.location = location || undefined;
         this.tags = tags || [];
-        this.summary = summary || undefined;
         this.rating = rating || 0;
         this.availabilityStatus = availabilityStatus || "Available";
         this.digitalVersionURL = digitalVersionURL || undefined;

@@ -23,21 +23,21 @@ const myLibrary = {
     bookLookup: []
 };
 
-let uploadedImageData = ""; // This will store the image data URL
+// let uploadedImageData = "";
 
-imageInput.addEventListener("change", function (event) {
-    const file = event.target.files[0]; // Get the selected file
+// imageInput.addEventListener("change", function (event) {
+//     const file = event.target.files[0];
 
-    if (file && file.type.startsWith("image/")) {
-        const reader = new FileReader();
+//     if (file && file.type.startsWith("image/")) {
+//         const reader = new FileReader();
 
-        reader.onload = function (e) {
-            uploadedImageData = e.target.result; // Store the Base64 image data
-        };
+//         reader.onload = function (e) {
+//             uploadedImageData = e.target.result;
+//         };
 
-        reader.readAsDataURL(file); // Convert file to Base64
-    }
-});
+//         reader.readAsDataURL(file);
+//     }
+// });
 
 function addToShelf(book) {
     createBook(book);
@@ -73,9 +73,9 @@ form.addEventListener("submit", (event) => {
 });
 
 class Book {
-    constructor(title, imageUpload, author, genre, numOfPages, yearPublished, ISBN, publisher, language, edition, format, location, tags, rating, availabilityStatus, digitalVersionURL, seriesInfo, bookRecipient, checkoutDate) {
+    constructor(ISBN, title, author, genre, numOfPages, yearPublished, publisher, language, edition, format, location, tags, rating, availabilityStatus, digitalVersionURL, seriesInfo, bookRecipient, checkoutDate) {
         this.title = title;
-        this.imageUpload = imageUpload || "https://placehold.co/300x480?text=book+image%0Aplaceholder";
+        // this.imageUpload = imageUpload || "https://placehold.co/300x480?text=book+image%0Aplaceholder";
         this.author = author;
         this.genre = genre;
         this.yearPublished = yearPublished;
@@ -114,9 +114,9 @@ function createBook(book) {
 
     function createBtns() {
         const buttonsData = [
-            { ariaLabel: "Book Details", icon: "book", text: "Details" },
-            { ariaLabel: "Mark as Read", icon: "book-open", text: "Unread" },
-            { ariaLabel: "Remove from Shelf", icon: "trash", text: "Remove" }
+            { ariaLabel: "Book Details", icon: "book", text: "Details", id: "details" },
+            { ariaLabel: "Mark as Read", icon: "book-open", text: "Untouched", id: "untouched" },
+            { ariaLabel: "Remove from Shelf", icon: "trash", text: "Remove", id: "remove" }
         ];
 
         buttonsData.forEach(data => {
@@ -128,6 +128,7 @@ function createBook(book) {
             button.setAttribute("aria-label", data.ariaLabel);
             icon.setAttribute("data-feather", data.icon);
             para.textContent = data.text;
+            button.setAttribute("id", data.id);
 
             button.appendChild(icon);
             button.appendChild(para);
@@ -146,3 +147,4 @@ function createBook(book) {
 
     feather.replace();
 }
+

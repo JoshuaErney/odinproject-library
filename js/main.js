@@ -9,6 +9,24 @@ const cancelBtn = document.querySelector(".cancelBtn");
 const submitBtn = document.querySelector(".submitBtn");
 const refreshBtn = document.querySelector(".refreshBtn");
 
+document.addEventListener("click", function (e) {
+    if (e.target.closest("#remove")) {
+        const bookCard = e.target.closest(".book-card");
+        if (bookCard) {
+            bookCard.remove(); // Remove the book from the DOM
+        }
+    }
+
+    if (e.target.closest("#untouched")) {
+        const button = e.target.closest("#untouched");
+        const textElement = button.querySelector("#btn-text-read");
+
+        if (textElement) {
+            textElement.textContent = textElement.textContent.trim() === "Untouched" ? "Completed" : "Untouched";
+        }
+    }
+});
+
 quickAddBtn.addEventListener("click", () => {
     dialog.showModal();
 });
@@ -17,36 +35,32 @@ cancelBtn.addEventListener("click", () => {
     dialog.close();
 });
 
+
+
 const myLibrary = {
     finishedBooks: [],
     unfinishedBooks: [],
     bookLookup: []
 };
 
-// let uploadedImageData = "";
+let uploadedImageData = "";
 
-// imageInput.addEventListener("change", function (event) {
-//     const file = event.target.files[0];
+imageInput.addEventListener("change", function (event) {
+    const file = event.target.files[0];
 
-//     if (file && file.type.startsWith("image/")) {
-//         const reader = new FileReader();
+    if (file && file.type.startsWith("image/")) {
+        const reader = new FileReader();
 
-//         reader.onload = function (e) {
-//             uploadedImageData = e.target.result;
-//         };
+        reader.onload = function (e) {
+            uploadedImageData = e.target.result;
+        };
 
-//         reader.readAsDataURL(file);
-//     }
-// });
+        reader.readAsDataURL(file);
+    }
+});
 
 function addToShelf(book) {
     createBook(book);
-}
-
-function addUnfinishedBook(book) {
-    let newBook = new Book(...Object.values(book));
-    myLibrary.unfinishedBooks.push(newBook);
-    return addToShelf(book);
 }
 
 function clearInputFields() {
@@ -55,7 +69,6 @@ function clearInputFields() {
     document.querySelectorAll("select").forEach(select => select.selectedIndex = 0);
 }
 
-// Submit button captures the form data
 form.addEventListener("submit", (event) => {
     event.preventDefault();
     const book = Object.fromEntries(new FormData(form));
@@ -63,8 +76,6 @@ form.addEventListener("submit", (event) => {
     if (uploadedImageData) {
         book.imageUpload = uploadedImageData;
         uploadedImageData = "";
-    } else {
-        book.imageUpload = "https://placehold.co/300x480?text=book+image%0Aplaceholder";
     }
 
     clearInputFields();
@@ -72,22 +83,49 @@ form.addEventListener("submit", (event) => {
     addUnfinishedBook(book);
 });
 
+function addUnfinishedBook(bookData) {
+    let newBook = new Book(
+        bookData.ISBN,
+        bookData.title,
+        bookData.imageUpload,
+        bookData.author,
+        bookData.genre,
+        bookData.numOfPages,
+        bookData.yearPublished,
+        bookData.publisher,
+        bookData.language,
+        bookData.edition,
+        bookData.format,
+        bookData.location,
+        bookData.tags,
+        bookData.rating,
+        bookData.availabilityStatus,
+        bookData.digitalVersionURL,
+        bookData.seriesInfo,
+        bookData.bookRecipient,
+        bookData.checkoutDate
+    );
+
+    myLibrary.unfinishedBooks.push(newBook);
+    return addToShelf(newBook);
+}
+
 class Book {
-    constructor(ISBN, title, author, genre, numOfPages, yearPublished, publisher, language, edition, format, location, tags, rating, availabilityStatus, digitalVersionURL, seriesInfo, bookRecipient, checkoutDate) {
+    constructor(ISBN, title, imageUpload, author, genre, numOfPages, yearPublished, publisher, language, edition, format, location, tags, rating, availabilityStatus, digitalVersionURL, seriesInfo, bookRecipient, checkoutDate) {
+        this.ISBN = ISBN;
         this.title = title;
-        // this.imageUpload = imageUpload || "https://placehold.co/300x480?text=book+image%0Aplaceholder";
+        this.imageUpload = imageUpload || "https://placehold.co/300x480?text=book+image%0Aplaceholder";
         this.author = author;
         this.genre = genre;
         this.yearPublished = yearPublished;
         this.numOfPages = numOfPages;
-        this.ISBN = ISBN;
         this.publisher = publisher || undefined;
         this.language = language || undefined;
         this.edition = edition || undefined;
         this.format = format || undefined;
         this.location = location || undefined;
         this.tags = tags || [];
-        this.rating = rating || 0;
+        this.rating = rating || undefined;
         this.availabilityStatus = availabilityStatus || "Available";
         this.digitalVersionURL = digitalVersionURL || undefined;
         this.seriesInfo = seriesInfo || undefined;
@@ -97,13 +135,11 @@ class Book {
 }
 
 function createBook(book) {
-    // Create Elements
     const bookCard = document.createElement("div");
     const bookCoverImg = document.createElement("div");
     const bookActions = document.createElement("div");
     const bookImg = document.createElement("img");
 
-    // Set Classes
     bookCard.setAttribute("class", "book-card");
     bookCoverImg.setAttribute("class", "book-cover-img");
     bookActions.setAttribute("class", "book-actions");
@@ -114,9 +150,9 @@ function createBook(book) {
 
     function createBtns() {
         const buttonsData = [
-            { ariaLabel: "Book Details", icon: "book", text: "Details", id: "details" },
-            { ariaLabel: "Mark as Read", icon: "book-open", text: "Untouched", id: "untouched" },
-            { ariaLabel: "Remove from Shelf", icon: "trash", text: "Remove", id: "remove" }
+            { ariaLabel: "Book Details", icon: "book", text: "Details", id: "details", paraID: "btn-text-details" },
+            { ariaLabel: "Mark as Read", icon: "book-open", text: "Untouched", id: "untouched", paraID: "btn-text-read" },
+            { ariaLabel: "Remove from Shelf", icon: "trash", text: "Remove", id: "remove", paraID: "btn-text-delete" }
         ];
 
         buttonsData.forEach(data => {
@@ -127,6 +163,7 @@ function createBook(book) {
             button.classList.add("btn-details", "icon");
             button.setAttribute("aria-label", data.ariaLabel);
             icon.setAttribute("data-feather", data.icon);
+            para.setAttribute("id", data.paraID);
             para.textContent = data.text;
             button.setAttribute("id", data.id);
 
